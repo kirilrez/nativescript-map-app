@@ -1,16 +1,16 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.mapApp",
-    "tns-ios": {
-      "version": "1.4.1"
-    },
-    "tns-android": {
-      "version": "1.4.0"
-    }
-  },
-  "dependencies": {
-    "nativescript-google-maps-sdk": "^1.0.4",
-    "nativescript-plugin-google-play-services": "^26.0.2",
-    "tns-core-modules": "1.4.0"
-  }
+	"nativescript": {
+		"id": "org.nativescript.mapApp",
+		"tns-ios": {
+			"version": "1.4.1"
+		},
+		"tns-android": {
+			"version": "1.4.0"
+		}
+	},
+	"dependencies": {
+		"nativescript-google-maps-sdk": "^1.0.4",
+		"nativescript-plugin-google-play-services": "^26.0.2",
+		"tns-core-modules": "1.4.0"
+	}
 }
