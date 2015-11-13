@@ -2,9 +2,14 @@
     xmlns="http://www.nativescript.org/tns.xsd"
     xmlns:maps="nativescript-google-maps-sdk"
     >
-  <GridLayout>
-    <maps:mapView latitude="{{ latitude }}" longitude="{{ latitude }}" 
+	<StackLayout orientation ="vertical">
+		<Label id="Label1" text="Sunshine Bus"/>
+
+  		<GridLayout>
+    		<maps:mapView latitude="{{ latitude }}" longitude="{{ latitude }}" 
                                     zoom="{{ zoom }}" bearing="{{ bearing }}" 
                                     tilt="{{ tilt }}" mapReady="OnMapReady" />
-  </GridLayout>
+  		</GridLayout>
+
+  	</StackLayout>	
 </Page>

@@ -9,6 +9,10 @@ button {
     horizontal-align: center;
 }
 
+maps {
+	height: 100;
+}
+
 .message {
     font-size: 20;
     color: #284848;

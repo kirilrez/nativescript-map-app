@@ -14,10 +14,10 @@ function OnMapReady(args) {
     } 
  
     if (mapView.ios) {
-        var position = CLLocationCoordinate2DMake(-33.86, 151.20);
-        var marker = GMSMarker.markerWithPosition(CLLocationCoordinate2DMake(-33.86, 151.20));
-        marker.title = "Sydney";
-        marker.snippet = "Australia";
+        var position = CLLocationCoordinate2DMake(46.185790, -123.811471);
+        var marker = GMSMarker.markerWithPosition(CLLocationCoordinate2DMake(46.185790, -123.811471));
+        marker.title = "Astoria";
+        marker.snippet = "Oregon";
         marker.map = gMap;
     }
 }
