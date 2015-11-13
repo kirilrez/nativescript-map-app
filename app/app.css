@@ -1,16 +1,37 @@
-﻿.title {
+﻿Page {
+	background-color: #F2F2F2;
+	font-size: 17;
+}
+
+Label {
+	background-color: #25fc3e;
+	text-align: center;
+}
+
+.title {
     font-size: 30;
     horizontal-align: center;
     margin:20;
 }
 
-button {
-    font-size: 42;
-    horizontal-align: center;
+Button {
+	color: black;
+    /*horizontal-align: center;*/
+    border-color: gray;
+    border-width: 2;
+    border-radius: 5;
+    margin: 10;
+    padding: 10;
 }
 
-maps {
-	height: 100;
+#mainLogo {
+	margin: 2;
+}
+
+#theMap {
+	margin: 10;
+	height: 300;
+	border-radius: 5;
 }
 
 .message {

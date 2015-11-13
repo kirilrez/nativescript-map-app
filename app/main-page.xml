@@ -1,15 +1,32 @@
 <Page 
     xmlns="http://www.nativescript.org/tns.xsd"
     xmlns:maps="nativescript-google-maps-sdk"
+    loaded = "pageLoaded"
     >
+
 	<StackLayout orientation ="vertical">
-		<Label id="Label1" text="Sunshine Bus"/>
+    <!-- The Logo -->  
+    <Image id = "mainLogo" src="res://logo" stretch="none" horizontalAlignment="center" />
+    <Label text = " All services running normal.  "/>
 
-  		<GridLayout>
-    		<maps:mapView latitude="{{ latitude }}" longitude="{{ latitude }}" 
-                                    zoom="{{ zoom }}" bearing="{{ bearing }}" 
-                                    tilt="{{ tilt }}" mapReady="OnMapReady" />
-  		</GridLayout>
 
-  	</StackLayout>	
+  	<!-- The Map	 -->
+    <!-- Figure out data binding to initialize map -->
+    <maps:mapView id="theMap" latitude="46.185790" longitude="-123.811471" 
+                                    zoom="11" bearing="{{ bearing }}" 
+                                    tilt="{{ tilt }}" mapReady="OnMapReady" /> -->
+    <!-- The buttons -->
+    <Button text = "Get Current Bus Locations"  />
+    <Button text = "Plan Your Trip"  />
+
+    <!-- <Label text="Here is my api data:" />
+        <ListView items="{{ geoData }}" row="1" colSpan="2">
+            <ListView.itemTemplate>
+                <Label text="{{ latitude + ' is '+ longitude + ' and ' + zoom }}" horizontalAlignment="left" verticalAlignment="center"/>
+            </ListView.itemTemplate>
+        </ListView>    -->
+
+
+  </StackLayout>	
+
 </Page>
