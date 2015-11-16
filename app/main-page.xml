@@ -16,17 +16,20 @@
                                     zoom="11" bearing="{{ bearing }}" 
                                     tilt="{{ tilt }}" mapReady="OnMapReady" />  -->
 
+    
     <maps:mapView id="theMap" 
-                  latitude="{{ latitude }}" 
-                  longitude="{{longitude}}" 
-                  zoom="{{ zoom }}" 
+                  latitude="{{ geoData.latitude }}" 
+                  longitude="{{ geoData.longitude}}" 
+                  zoom="{{ geoData.zoom }}" 
                   mapReady="OnMapReady" /> 
+    
 
     <!-- The buttons -->
     <Button text = "Get Current Bus Locations" />
     <Button text = "Plan Your Trip" />
 
   </StackLayout>  
+
 </Page>
 
     <!-- <Label text="Here is my api data:" />

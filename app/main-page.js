@@ -3,29 +3,24 @@ var observableArrayModule = require("data/observable-array");
 
 var page;
 
-// var pageData = new observableModule.Observable({
-//      geoData:  new observableArrayModule.ObservableArray([   
-//         {
-//             latitude  : "46.185790", 
-//             longitude   : "-123.811471",
-//             zoom : "14"  
-//         }
-//      ])
-// });
+// Todo: GPS call to return user's location
+// Current hardwired version:
+geoData = 
+        {
+            latitude  : "46.185790", 
+            longitude   : "-123.811471",
+            zoom : "15"  
+        }
+     ;
 
 var pageData = new observableModule.Observable({
- 
- latitude: "46.185790",
- longitude: "-123.811471",
- zoom: "12"
-
+     geoData: geoData
 });
 
-exports.pageLoaded = function(args) {
 
+exports.pageLoaded = function(args) {
     page = args.object;
     page.bindingContext = pageData;
-
 };
 
 exports.OnMapReady= function(args) {
@@ -44,11 +39,15 @@ exports.OnMapReady= function(args) {
         //     gMap.addMarker(markerOptions);
         // } 
      
-        // if (mapView.ios) {
-        //     var position = CLLocationCoordinate2DMake(46.185790, -123.811471);
-        //     var marker = GMSMarker.markerWithPosition(CLLocationCoordinate2DMake(46.185790, -123.811471));
-        //     marker.title = "Astoria";
-        //     marker.snippet = "Oregon";
-        //     marker.map = gMap;
-        // }
+
+
+        if (mapView.ios) {
+
+            // Replace with current bus options and their associated locations
+            var position = CLLocationCoordinate2DMake(46.185790, -123.811471);
+            var marker = GMSMarker.markerWithPosition(CLLocationCoordinate2DMake(46.185790, -123.811471));
+            marker.title = "Astoria";
+            marker.snippet = "Oregon";
+            marker.map = gMap;
+        }
 };
