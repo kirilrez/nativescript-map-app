@@ -6,6 +6,9 @@
 Label {
 	background-color: #25fc3e;
 	text-align: center;
+	border-radius: 5;
+	margin: 10;
+    /*padding: 10;*/
 }
 
 .title {
@@ -17,6 +20,7 @@ Label {
 Button {
 	color: black;
     /*horizontal-align: center;*/
+   	background-color: #eaeaea;
     border-color: gray;
     border-width: 2;
     border-radius: 5;
