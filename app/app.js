@@ -3,7 +3,7 @@ var application = require("application");
 application.mainModule = "main-page";
 application.cssFile = "./app.css";
 if(application.ios) {
-  GMSServices.provideAPIKey("AIzaSyAjhlF70etTrM5fIGYfR_NlB_W5kXqE7Ng");
+  GMSServices.provideAPIKey("YOUR_API_KEY_HERE_FOR_iOS");
 }
 application.start();
 
