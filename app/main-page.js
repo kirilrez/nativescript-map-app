@@ -2,6 +2,7 @@ var dialogsModule = require("ui/dialogs");
 var observableModule = require("data/observable");
 var observableArrayModule = require("data/observable-array");
 var dataModelModule = require("~/main-data-model");
+var locationModule = require("location");
 
 var page;
 
@@ -56,6 +57,46 @@ exports.OnMapReady= function(args) {
 
 exports.getElevationProf = function (){
     // Get current GPS
+        var LocationManager = require("location").LocationManager;
+        var isEnabled = LocationManager.isEnabled();
+        var locationManager = new LocationManager();
+        var lastKnownLocation = locationManager.lastKnownLocation;
+
+        // To Add: can we turn on location services in the simulator?
+        // Are they on by default on the device? Prolly not...
+        // Dialog to turn them on?
+        
+        // var iosLocationManager = CLLocationManager.alloc().init();
+        // iosLocationManager.requestWhenInUseAuthorization();
+
+
+
+        dialogsModule.alert({
+            message: 'Location received: ' + isEnabled,
+            okButtonText: 'Ok'
+        });
+
+
+
+    // locationModule.getLocation({ maximumAge: 30000, timeout: 0 })
+    // .then(function (location) {
+        
+    //     dialogsModule.alert({
+    //         message: 'Location received: ' + location,
+    //         okButtonText: 'Ok'
+    //     });
+
+    //     console.log('Location received: ' + location);
+    // }, function (error) {
+
+    //     dialogsModule.alert({
+    //         message: 'Location error received: ' + error,
+    //         okButtonText: 'Ok'
+    //     });
+
+    //     console.log('Location error received: ' + error);
+    // });
+
     // Send query to google elevation api with current GPS and column GPS
     // then update the chart.
 };
