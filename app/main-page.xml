@@ -1,16 +1,16 @@
 <Page 
     xmlns="http://www.nativescript.org/tns.xsd"
+    xmlns:chart="nativescript-telerik-ui/chart"
     xmlns:maps="nativescript-google-maps-sdk"
     loaded = "pageLoaded"
     >
 
-	<StackLayout orientation ="vertical">
+  <StackLayout orientation ="vertical">
     <!-- The Logo -->  
-    <Image id = "mainLogo" src="res://logo" stretch="none" horizontalAlignment="center" />
-    <Label text = " All services running normal.  "/>
+    <Image id = "mainLogo" src="res://mainLogo" stretch="none" horizontalAlignment="center" />
 
 
-  	<!-- The Map	 -->
+    <!-- The Map   -->
     <!-- Figure out data binding to initialize map -->
     <!-- <maps:mapView id="theMap" latitude="46.185790" longitude="-123.811471" 
                                     zoom="11" bearing="{{ bearing }}" 
@@ -23,10 +23,23 @@
                   zoom="{{ geoData.zoom }}" 
                   mapReady="OnMapReady" /> 
     
+    <!-- The Chart -->
+    <chart:RadCartesianChart id="cartesianChart">
+            <chart:RadCartesianChart.series>
+                <chart:LineSeries items="{{ categoricalSource }}" categoryProperty="Country" valueProperty="Amount">
+                    <chart:LineSeries.horizontalAxis>
+                        <chart:CategoricalAxis/>
+                    </chart:LineSeries.horizontalAxis>
+                    <chart:LineSeries.verticalAxis>
+                        <chart:LinearAxis/>
+                    </chart:LineSeries.verticalAxis>
+                </chart:LineSeries>
+            </chart:RadCartesianChart.series>
+        </chart:RadCartesianChart>
 
-    <!-- The buttons -->
-    <Button text = "Get Current Bus Locations" />
-    <Button text = "Plan Your Trip" />
+
+    <!-- The button -->
+    <Button text = "Plot Elevation Profile to Column" tap="getElevationProf" />
 
   </StackLayout>  
 
@@ -38,5 +51,3 @@
                 <Label text="{{ latitude + ' is '+ longitude + ' and ' + zoom }}" horizontalAlignment="left" verticalAlignment="center"/>
             </ListView.itemTemplate>
         </ListView>    -->
-
-

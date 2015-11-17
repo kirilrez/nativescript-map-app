@@ -1,5 +1,7 @@
+var dialogsModule = require("ui/dialogs");
 var observableModule = require("data/observable");
 var observableArrayModule = require("data/observable-array");
+var dataModelModule = require("~/main-data-model");
 
 var page;
 
@@ -21,6 +23,8 @@ var pageData = new observableModule.Observable({
 exports.pageLoaded = function(args) {
     page = args.object;
     page.bindingContext = pageData;
+    page.bindingContext = new dataModelModule.CategoricalDataModel();
+
 };
 
 exports.OnMapReady= function(args) {
@@ -39,8 +43,6 @@ exports.OnMapReady= function(args) {
         //     gMap.addMarker(markerOptions);
         // } 
      
-
-
         if (mapView.ios) {
 
             // Replace with current bus options and their associated locations
@@ -51,3 +53,10 @@ exports.OnMapReady= function(args) {
             marker.map = gMap;
         }
 };
+
+exports.getElevationProf = function (){
+    // Get current GPS
+    // Send query to google elevation api with current GPS and column GPS
+    // then update the chart.
+};
+

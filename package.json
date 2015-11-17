@@ -11,6 +11,7 @@
 	"dependencies": {
 		"nativescript-google-maps-sdk": "^1.0.4",
 		"nativescript-plugin-google-play-services": "^26.0.2",
+		"nativescript-telerik-ui": "^0.1.1",
 		"tns-core-modules": "1.4.0"
 	}
 }
