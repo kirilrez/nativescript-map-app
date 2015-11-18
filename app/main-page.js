@@ -4,6 +4,22 @@ var observableArrayModule = require("data/observable-array");
 var dataModelModule = require("~/main-data-model");
 var locationModule = require("location");
 
+// location monitoring
+var locationManager = new locationModule.LocationManager();
+
+var locationOptions = {
+    desiredAccuracy: 3,
+    updateDistance: 0,
+    minimumUpdateTime: 5000,
+    maximumAge: 20000
+};
+
+// Request a permission to use location service
+var buttonModule = require("ui/button");
+var appModule = require("application");
+var platformModule = require("platform");
+
+
 var page;
 
 // Todo: GPS call to return user's location
@@ -57,45 +73,24 @@ exports.OnMapReady= function(args) {
 
 exports.getElevationProf = function (){
     // Get current GPS
-        var LocationManager = require("location").LocationManager;
-        var isEnabled = LocationManager.isEnabled();
-        var locationManager = new LocationManager();
-        var lastKnownLocation = locationManager.lastKnownLocation;
+        var iosLocationManager = CLLocationManager.alloc().init();
+            iosLocationManager.requestWhenInUseAuthorization();
+
+    locationManager.startLocationMonitoring(function(location){
+        
+        console.log("Location received: " + JSON.stringify(location));
+    }, function (error) {
+        console.log("Location error received: " + error);
+    }, locationOptions);
+
+
+
+
 
         // To Add: can we turn on location services in the simulator?
         // Are they on by default on the device? Prolly not...
         // Dialog to turn them on?
-        
-        // var iosLocationManager = CLLocationManager.alloc().init();
-        // iosLocationManager.requestWhenInUseAuthorization();
 
-
-
-        dialogsModule.alert({
-            message: 'Location received: ' + isEnabled,
-            okButtonText: 'Ok'
-        });
-
-
-
-    // locationModule.getLocation({ maximumAge: 30000, timeout: 0 })
-    // .then(function (location) {
-        
-    //     dialogsModule.alert({
-    //         message: 'Location received: ' + location,
-    //         okButtonText: 'Ok'
-    //     });
-
-    //     console.log('Location received: ' + location);
-    // }, function (error) {
-
-    //     dialogsModule.alert({
-    //         message: 'Location error received: ' + error,
-    //         okButtonText: 'Ok'
-    //     });
-
-    //     console.log('Location error received: ' + error);
-    // });
 
     // Send query to google elevation api with current GPS and column GPS
     // then update the chart.
