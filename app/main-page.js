@@ -71,6 +71,15 @@ exports.OnMapReady= function(args) {
         }
 };
 
+// Function 1
+// define function to interact with google elevation api... just 
+// passing a query string with the coordinates of column and returned user
+// position
+
+// Function 2
+// plot the returned data from Function 1.
+
+
 exports.getElevationProf = function (){
     // Get current GPS
         var iosLocationManager = CLLocationManager.alloc().init();
@@ -83,16 +92,9 @@ exports.getElevationProf = function (){
         console.log("Location error received: " + error);
     }, locationOptions);
 
+    // Function 1
 
+    // Function 2
 
-
-
-        // To Add: can we turn on location services in the simulator?
-        // Are they on by default on the device? Prolly not...
-        // Dialog to turn them on?
-
-
-    // Send query to google elevation api with current GPS and column GPS
-    // then update the chart.
 };
 
