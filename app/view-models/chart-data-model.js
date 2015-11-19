@@ -1,6 +1,9 @@
+// Charting
 var dependencyObservableModule = require("ui/core/dependency-observable");
+
 var CategoricalDataModel = (function (_super) {
     __extends(CategoricalDataModel, _super);
+    
     function CategoricalDataModel() {
         _super.call(this);
     }
@@ -17,8 +20,8 @@ var CategoricalDataModel = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    ;
+    
     return CategoricalDataModel;
 })(dependencyObservableModule.DependencyObservable);
 exports.CategoricalDataModel = CategoricalDataModel;
-    
+

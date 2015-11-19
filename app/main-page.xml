@@ -16,7 +16,7 @@
                                     zoom="11" bearing="{{ bearing }}" 
                                     tilt="{{ tilt }}" mapReady="OnMapReady" />  -->
 
-    
+  
     <maps:mapView id="theMap" 
                   latitude="{{ geoData.latitude }}" 
                   longitude="{{ geoData.longitude}}" 
