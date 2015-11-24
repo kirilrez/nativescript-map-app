@@ -1,6 +1,5 @@
 module.exports = {
-    // apiKey = "YOUR_API_KEY_HERE_FOR_iOS",
-    apiKey: "AIzaSyCPfkZC-BXChfwvqIpzH3jxCL6bMxkWoOQ",
+    apiKey : "YOUR_API_KEY_HERE_FOR_iOS",
     startElevUri:"http://maps.googleapis.com/maps/api/elevation/json?path=",
     endElevUri:"&samples=20&key="
 
