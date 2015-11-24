@@ -74,15 +74,18 @@ exports.OnMapReady= function(args) {
         //     gMap.addMarker(markerOptions);
         // } 
      
-        // if (mapView.ios) {
+        if (mapView.ios) {
 
-        //     // Replace with current bus options and their associated locations
-        //     var position = CLLocationCoordinate2DMake(46.185790, -123.811471);
-        //     var marker = GMSMarker.markerWithPosition(CLLocationCoordinate2DMake(46.185790, -123.811471));
-        //     marker.title = "Astoria";
-        //     marker.snippet = "Oregon";
-        //     marker.map = gMap;
-        // }
+            // Replace with current bus options and their associated locations
+            var position = CLLocationCoordinate2DMake(46.185790, -123.811471);
+            var marker = GMSMarker.markerWithPosition(CLLocationCoordinate2DMake(46.185790, -123.811471));
+            marker.title = "Astoria";
+            marker.snippet = "Oregon";
+            marker.map = gMap;
+
+            // Try to draw a path
+
+        }
 };
 
 
