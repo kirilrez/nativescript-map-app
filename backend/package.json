@@ -1,15 +1,14 @@
 {
-  "name": "api_app",
+  "name": "googleApiCaller",
   "version": "0.1.0",
-  "description": "expose endpoints to web and mobile clients",
-  "main": "hello-node.js",
+  "description": "expose google api endpoints to mobile {N} client",
+  "main": "googleApiCaller.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "@kvnphllps",
   "license": "ISC",
   "dependencies": {
-    "async": "^1.5.0",
     "express": "^4.13.3",
     "morgan": "^1.6.1"
   }

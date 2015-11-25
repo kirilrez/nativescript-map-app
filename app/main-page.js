@@ -14,8 +14,8 @@ var observableArrayModule = require("data/observable-array");
 var dataModelModule = require("~/view-models/chart-data-model");
 
 // Google API
-var MapDataViewModel = require("~/view-models/api-data-model");
-var getElev = new MapDataViewModel();    
+var ElevDataViewModel = require("~/view-models/elev-data-model");
+var elevData = new ElevDataViewModel();    
 
 // Location services
 var locationModule = require("location");
@@ -47,7 +47,8 @@ var myLoc = new Location();
 
 // Data binding of "geoData" to the view
 var pageData = new observableModule.Observable({
-     geoData: initialLoc
+     geoData: initialLoc,
+     elevData: elevData
 });
 
 
@@ -114,10 +115,13 @@ exports.getElevationProf = function (){
         
         console.log(JSON.stringify(myLoc));
         console.log(JSON.stringify(columnLoc));
-        
-        getElev.load(myLoc, columnLoc);
+        elevData = new ElevDataViewModel(); 
+        elevData.load(myLoc, columnLoc);
 
-        // console.log(JSON.stringify(stuff));
+    });
+
+    var letMeHaveData = getApiData.then(function(){
+        console.log(pageData.get('elevData'));
     });
 
     

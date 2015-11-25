@@ -24,6 +24,7 @@
                   mapReady="OnMapReady" /> 
     
     <!-- The Chart -->
+    <Label text="{{ 'Distance to column: ' + getDist + ' FT.' }}" />
     <chart:RadCartesianChart id="cartesianChart">
             <chart:RadCartesianChart.series>
                 <chart:LineSeries items="{{ categoricalSource }}" categoryProperty="Country" valueProperty="Amount">

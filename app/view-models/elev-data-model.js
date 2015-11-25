@@ -4,10 +4,10 @@ var observableArrayModule = require("data/observable-array");
 
 var config = require("~/config");
 
-function MapDataViewModel(myLoc, columnLoc) {
-    var mapData = new observableArrayModule.ObservableArray();
+function ElevDataViewModel(myLoc, columnLoc, items) {
+    var elevData = new observableArrayModule.ObservableArray(items);
     
-    mapData.load = function(myLoc, columnLoc) {
+    elevData.load = function(myLoc, columnLoc) {
             
             // First approach (not working): construct a direct https get request to google
             // var apiQuery = config.startElevUri + myLoc.latitude + ',' +  myLoc.longitude + '|'+ columnLoc.latitude + ',' + columnLoc.longitude + config.endElevUri + config.apiKey ;        
@@ -26,34 +26,50 @@ function MapDataViewModel(myLoc, columnLoc) {
                            columnLoc.latitude + '/' +
                            columnLoc.longitude + '/' +
                            config.apiKey;
-
-            fetch(apiQuery)
-            .then(function (r) { 
+            
+            // Test the api query sent to the googles
+            console.log(apiQuery);              
+            
+            return fetch(apiQuery)
+            .then(function (response) { 
                     
-                    console.log(JSON.stringify(r));
-                    return r.json();
+                    // console.log(JSON.stringify(r));
+                    return response.json();
                 
-                }, function (e) {
+                }, function (error) {
                 
-                    console.log(e);
+                    console.log(error);
                 
             })
-            .then(function(data) {
-                    // console.log(JSON.stringify(data));
-                    mapData.push(data);
-                    // console.log(JSON.stringify(mapData));
+            .then(function (data) {
+
+                dataSet = data.results;
+
+                for (var i=0; i<dataSet.length; i++){
+                    
+                    elevData.push(
+                        {
+                            lat: dataSet[i].location.lat,
+                            lng: dataSet[i].location.lng,
+                            elev: dataSet[i].elevation
+                        }
+                    );
+                }
+
+                // console.log(JSON.stringify(dataSet));
+
             });
 
         };
 
-     return mapData;    
-}
+     return elevData;    
+ }
 
 function handleErrors(response) {
     if (!response.ok) {
         console.log(JSON.stringify(response));
         throw Error(response.statusText);
     }
-    return response;
-}
-module.exports=MapDataViewModel;
+    return response;}
+
+module.exports=ElevDataViewModel;
