@@ -21,6 +21,15 @@ var CategoricalDataModel = (function (_super) {
         configurable: true
     });
     
+
+// Object.defineProperty(CategoricalDataModel.prototype, "categoricalSource", {
+//         get: function () {
+//             return elevData;
+//         },
+//         enumerable: true,
+//         configurable: true
+//     });
+
     return CategoricalDataModel;
 })(dependencyObservableModule.DependencyObservable);
 exports.CategoricalDataModel = CategoricalDataModel;

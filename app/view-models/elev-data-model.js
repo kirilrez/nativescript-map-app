@@ -5,9 +5,9 @@ var observableArrayModule = require("data/observable-array");
 var config = require("~/config");
 
 function ElevDataViewModel(myLoc, columnLoc, items) {
-    var elevData = new observableArrayModule.ObservableArray(items);
+    var viewModel = new observableArrayModule.ObservableArray(items);
     
-    elevData.load = function(myLoc, columnLoc) {
+    viewModel.load = function(myLoc, columnLoc) {
             
             // First approach (not working): construct a direct https get request to google
             // var apiQuery = config.startElevUri + myLoc.latitude + ',' +  myLoc.longitude + '|'+ columnLoc.latitude + ',' + columnLoc.longitude + config.endElevUri + config.apiKey ;        
@@ -42,28 +42,31 @@ function ElevDataViewModel(myLoc, columnLoc, items) {
                 
             })
             .then(function (data) {
-
-                dataSet = data.results;
-
+                var dataSet = data.results;
+                var cleanData=[];
+                // console.log('Building...');
                 for (var i=0; i<dataSet.length; i++){
                     
-                    elevData.push(
-                        {
+                    var currData = {
                             lat: dataSet[i].location.lat,
                             lng: dataSet[i].location.lng,
                             elev: dataSet[i].elevation
-                        }
-                    );
+                        };
+
+                    cleanData.push(currData);
+                    // console.log(JSON.stringify(currData));
                 }
 
-                // console.log(JSON.stringify(dataSet));
+                // viewModel.push(cleanData);
+                // console.log(JSON.stringify(cleanData));
+                return cleanData;
 
             });
+    };
 
-        };
+    return viewModel; 
 
-     return elevData;    
- }
+}
 
 function handleErrors(response) {
     if (!response.ok) {

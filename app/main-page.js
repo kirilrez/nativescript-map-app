@@ -15,7 +15,7 @@ var dataModelModule = require("~/view-models/chart-data-model");
 
 // Google API
 var ElevDataViewModel = require("~/view-models/elev-data-model");
-var elevData = new ElevDataViewModel();    
+var elevData = new ElevDataViewModel([],[],[]);    
 
 // Location services
 var locationModule = require("location");
@@ -42,20 +42,29 @@ initialLoc =
      ;
 
 var page;
-var dist; // set the value inside a promise below
+var distData=[]; // set the value inside a promise below
 var myLoc = new Location();
 
 // Data binding of "geoData" to the view
-var pageData = new observableModule.Observable({
+var pageData = new observableModule.Observable(
+
+{
      geoData: initialLoc,
-     elevData: elevData
-});
+     elevData: elevData,
+     distData: distData
+}
+
+);
 
 
 exports.pageLoaded = function(args) {
     page = args.object;
     page.bindingContext = pageData;
     page.bindingContext = new dataModelModule.CategoricalDataModel();
+
+    elevData.addEventListener(observableModule.Observable.propertyChangeEvent, function (pcEvent) {
+    console.log(pcEvent.eventName.toString() + " " + pcEvent.propertyName.toString() + " " + pcEvent.value.toString());
+});
 
 };
 
@@ -89,7 +98,6 @@ exports.OnMapReady= function(args) {
         }
 };
 
-
 exports.getElevationProf = function (){
     // Enable GPS services on iOS
 
@@ -103,31 +111,30 @@ exports.getElevationProf = function (){
     var getDistance = getMyLoc.then(function (location) {
         myLoc.latitude = location.latitude;
         myLoc.longitude = location.longitude;
-        
-        // dist = LocationManager.distance(location, columnLoc);
+        // distData = LocationManager.distance(myLoc, columnLoc);
+        // cosonle.log('Got your distance: ' + distData);
         
     });
 
-    
     
     // Promise to send request to google API
     var getApiData = getDistance.then(function() {
         
         console.log(JSON.stringify(myLoc));
         console.log(JSON.stringify(columnLoc));
-        elevData = new ElevDataViewModel(); 
-        elevData.load(myLoc, columnLoc);
+        elevData.load(myLoc, columnLoc, []).then(function (myData){
+            console.log('Plot this data! ');
+            console.log(JSON.stringify(myData));
+        });
+        
 
-    });
-
-    var letMeHaveData = getApiData.then(function(){
-        console.log(pageData.get('elevData'));
+        
     });
 
     
     // https://maps.googleapis.com/maps/api/elevation/json?path=36.578581,-118.291994|36.23998,-116.83171&samples=3&key=YOUR_API_KEY
 
-
-    
 };
+
+
 
