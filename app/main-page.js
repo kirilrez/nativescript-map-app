@@ -125,6 +125,9 @@ exports.getElevationProf = function (){
         elevData.load(myLoc, columnLoc, []).then(function (myData){
             console.log('Plot this data! ');
             console.log(JSON.stringify(myData));
+
+            // pass data to the plotter and done!
+
         });
         
 
