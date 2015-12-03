@@ -42,6 +42,8 @@ Next, add a mobile platform - this project has only been tested in the iOS envir
 
 Configure the project with your own google map API key in the ```config.js``` file: replace ```"YOUR_API_KEY_HERE_FOR_iOS"``` with your google API key.
 
+Next copy and paste the ```columnhike-Info.plist``` file from the configuration directory to the newly created directory ```platforms\ios\columnhike```. This file has been modified from the boilerplate ```.plist``` file to enable ```http``` calls from the app. This app is for demo purposes only and ```http``` is not considered secure for production use.
+
 To run the app on the Xcode iOS emulator:
 
 ```>tns run ios --emulator```
@@ -51,9 +53,6 @@ Next, in the emulator menu, select the debug dropdown and then select location. 
 The app requires the backend services running to connect to the google maps elevation API.
 
 ## Configuration of the Backend
-
-First copy and paste the 
-
 
 Change directory to the ```backend``` directory. Install package dependencies via npm:
 
@@ -67,5 +66,5 @@ Now you will have a localhost listening for calls from the app. The backend serv
 
 
 ## Credits
-This code relies on the work of [@dapriett](https://github.com/danvk) and this [article](http://tympanus.net/codrops/2013/03/19/thumbnail-grid-with-expanding-preview/) from codrops.
+This code relies on the porting of the google maps sdk to NativeScript by [@dapriett](https://github.com/danvk). This project was carried out while interning at [iFocus Consulting](http://www.ifocus.us/).
 
