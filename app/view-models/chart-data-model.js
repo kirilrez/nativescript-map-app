@@ -10,26 +10,17 @@ var CategoricalDataModel = (function (_super) {
     Object.defineProperty(CategoricalDataModel.prototype, "categoricalSource", {
         get: function () {
             return [
-                { Country: "Germany", Amount: Math.random() * 10 },
-                { Country: "France", Amount: Math.random() * 10 },
-                { Country: "Bulgaria", Amount: Math.random() * 10 },
-                { Country: "Spain", Amount: Math.random() * 10 },
-                { Country: "USA", Amount: Math.random() * 10 }
+                { Distance: 0, Elevation: 0 },
+                { Distance: 1, Elevation: 0 },
+                { Distance: 2, Elevation: 0 },
+                { Distance: 3, Elevation: 0 },
+                { Distance: 4, Elevation: 0 }
             ];
         },
         enumerable: true,
         configurable: true
     });
     
-
-// Object.defineProperty(CategoricalDataModel.prototype, "categoricalSource", {
-//         get: function () {
-//             return elevData;
-//         },
-//         enumerable: true,
-//         configurable: true
-//     });
-
     return CategoricalDataModel;
 })(dependencyObservableModule.DependencyObservable);
 exports.CategoricalDataModel = CategoricalDataModel;

@@ -24,17 +24,22 @@
                   mapReady="OnMapReady" /> 
     
     <!-- The Chart -->
-    <Label text="{{ 'Distance to column: ' + getDist + ' FT.' }}" />
+    <Label text="{{ 'Distance to column: ' + distData + ' [M]' }}" />
+    <!-- <Label text="{{  distData  }}" /> -->
+
     <chart:RadCartesianChart id="cartesianChart">
             <chart:RadCartesianChart.series>
-                <chart:LineSeries items="{{ categoricalSource }}" categoryProperty="Country" valueProperty="Amount">
-                    <chart:LineSeries.horizontalAxis>
-                        <chart:CategoricalAxis/>
-                    </chart:LineSeries.horizontalAxis>
-                    <chart:LineSeries.verticalAxis>
+                <chart:SplineSeries 
+                    items="{{ chartData.categoricalSource }}" categoryProperty="Distance" 
+                    valueProperty="Elevation"
+                    >
+                    <chart:SplineSeries.horizontalAxis>
                         <chart:LinearAxis/>
-                    </chart:LineSeries.verticalAxis>
-                </chart:LineSeries>
+                    </chart:SplineSeries.horizontalAxis>
+                    <chart:SplineSeries.verticalAxis>
+                        <chart:LinearAxis maximum="300"/>
+                    </chart:SplineSeries.verticalAxis>
+                </chart:SplineSeries>
             </chart:RadCartesianChart.series>
         </chart:RadCartesianChart>
 

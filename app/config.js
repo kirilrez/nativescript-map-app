@@ -1,6 +1,7 @@
 module.exports = {
     apiKey : "YOUR_API_KEY_HERE_FOR_iOS",
     
+    
     // hit up our localhost
     startElevUri:"http://localhost:3000/api"
     
