@@ -44,14 +44,6 @@ Configure the project with your own google map API key in the ```config.js``` fi
 
 Next copy and paste the ```columnhike-Info.plist``` file from the configuration directory to the newly created directory ```platforms\ios\columnhike```. This file has been modified from the boilerplate ```.plist``` file to enable ```http``` calls from the app. This app is for demo purposes only and ```http``` is not considered secure for production use.
 
-To run the app on the Xcode iOS emulator:
-
-```>tns run ios --emulator```
-
-Next, in the emulator menu, select the debug dropdown and then select location. You can enter your own location or select among the defaults. For sensible results in the app you can use the coordinates of downtown Astoria, OR - the town in which the Astoria column resides: ```latititude = 46.189474, longitude = -123.831298```.
-
-The app requires the backend services running to connect to the google maps elevation API.
-
 ## Configuration of the Backend
 
 Change directory to the ```backend``` directory. Install package dependencies via npm:
@@ -62,7 +54,27 @@ Then deploy the backend via
 
 ```>nodemon google-api-caller.js```
 
-Now you will have a localhost listening for calls from the app. The backend service uses ```morganjs``` to log out calls to the console. Hence, if you hit the one and only button in the app and do not see a corresponding log event in the console then there is a configuration  error of some kind.
+Now you will have a localhost listening for calls from the app. The backend service uses ```morganjs``` to log out calls to the console. 
+
+## Running the App
+
+To run the app on the Xcode iOS emulator:
+
+```>tns run ios --emulator```
+
+Note: the app requires the backend services running to connect to the google maps elevation API.
+
+A "TelerikUI for iOS" dialog box will appear - just click "Ok".
+
+Next, in the emulator menu, select the debug dropdown and then select location. You can enter your own location or select among the defaults. For sensible results in the app you can use the coordinates of downtown Astoria, OR: ```latititude = 46.189474, longitude = -123.831298```.
+
+## Troubleshooting
+
+The backend portion of the app currently logs all requests to the console. This lets you know if the backend is being utilized by the app. If you hit the one and only button in the app and do not see a corresponding log event in the console then there is a configuration  error of some kind.
+
+Another common issue is updating the location in the emulator. It has to be updated each time the app is ran.
+
+The important variables used in the app are all logged to the cosole as well to provide a means of investigating the behaviour of the app.
 
 
 ## Credits
